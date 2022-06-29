@@ -77,6 +77,18 @@ app.get("/posts/:postTitle", function(req, res){
   });
 });
 
+app.get("/delete/:postTitle", function(req, res){
+  var reqPostTitle = req.params.postTitle;
+  console.log(reqPostTitle);
+
+  Blog.findOneAndRemove({title: reqPostTitle}, function(err, post){
+    if (!err) {
+      res.redirect("/");
+    }
+  })
+
+});
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
