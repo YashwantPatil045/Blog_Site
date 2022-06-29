@@ -69,17 +69,13 @@ app.post("/compose", function(req, res){
 
 app.get("/posts/:postTitle", function(req, res){
   var reqPostTitle = req.params.postTitle;
-  console.log(reqPostTitle);
 
   Blog.findOne({title: reqPostTitle}, function(err, post){
     if (!err) {
-      console.log(post);
-      console.log(post.title);
       res.render("post", {post: post});
     }
   });
 });
-
 
 
 app.listen(3000, function() {
