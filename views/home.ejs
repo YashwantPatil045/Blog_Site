@@ -1,0 +1,15 @@
+<%- include('partials/header'); -%>
+  <body>
+    <h1>HOME</h1>
+    <p><%= start %></p><br>
+    <% if (posts.length === 0){ %>
+      <h2>There's no posts to show </h2>
+    <% } else { %>
+    <% posts.forEach(function(post){ %>
+      <h2><%= post.title %></h2>
+      <p><%= post.content.substr(0, 100) + "..." %><a href="/posts/<%= post.title %>">Read More</a></p><br>
+    <% }); %>
+    <% } %>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>
